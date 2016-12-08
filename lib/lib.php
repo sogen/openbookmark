@@ -4,7 +4,7 @@ function is_mobile_browser(){
 	//manual override to show mobiel
 	if (@$_GET['mobile'] == "1")
 		return true;
-	
+
 	//detect mobile
 	$device = false;
 	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
@@ -18,7 +18,7 @@ function is_mobile_browser(){
 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
 		$device = true;
 	}
-	return $device; 
+	return $device;
 }
 
 ###
@@ -160,7 +160,7 @@ function set_title () {
 		$_SESSION['title'] = $session_title;
 		$return = $session_title;
 	}
-	return $return;	
+	return $return;
 }
 
 function set_url () {
@@ -178,7 +178,7 @@ function set_url () {
 		$_SESSION['url'] = $session_url;
 		$return = $session_url;
 	}
-	return $return;	
+	return $return;
 }
 
 #############################################
@@ -311,7 +311,7 @@ function set_post_browser () {
 #########################################################
 
 ###
-### 
+###
 ###
 
 function return_charsets () {
@@ -460,9 +460,9 @@ function print_footer () {
 	//object_count();
 	//echo "<br>\n";
 
-	echo '<a class="footer" href="http://www.frech.ch/online-bookmarks/" target="_blank">Online-Bookmarks</a>' . "\n";
-	echo ' by Stefan Frech. <br />OpenBookmark ';
-	@readfile (ABSOLUTE_PATH . "VERSION");
+	echo '<a class="footer" href="XXXXXXXXX" target="_blank">XXXXXXXX</a>' . "\n";
+	// echo ' Copyright. <br />OpenBookmark ';
+	// @readfile (ABSOLUTE_PATH . "VERSION");
 	echo ' (C) dracflamloc @ <a href="https://github.com/dracflamloc/openbookmark">github.com</a>';
 	echo "</p>\n";
 }
@@ -474,7 +474,7 @@ function object_count () {
 	                          (SELECT COUNT(*) FROM folder   WHERE user='%s') AS folders",
 	                 $mysql->escape ($username),
 	                 $mysql->escape ($username));
-	
+
 	if ($mysql->query ($query)) {
 		if (mysql_num_rows ($mysql->result) == "1") {
 			$row = mysql_fetch_object ($mysql->result);
