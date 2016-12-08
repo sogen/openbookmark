@@ -1,0 +1,94 @@
+* {
+   border: 1px solid red !important;
+}
+
+/* General Settings */
+
+/* Folders section */
+/*div.folders {
+	float: left;
+	overflow: auto;
+	padding-right: 20px;
+	padding-bottom: 5px;
+	margin-right: 5px;
+	border: 1px solid #BBB;
+}*/
+
+/* Bookmarks section */
+/*div.bookmarks {
+	overflow:auto;
+	padding: 0px;
+	display: block;
+	border-left: 1px solid #bbb;
+}*/
+/*div.bookmark {
+	border-bottom: 1px solid #bbb;
+	padding: 4px;
+}*/
+
+
+div.bmleft {
+	float: left;
+	padding-right: 5px;
+}
+div.bmright {
+	float: right;
+	margin-left: 10px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+/*div.link {
+	padding: 0px 0px 2px;
+}*/
+/*span.private {
+	background-color: #E7FBE9;
+	color: #177F23;
+}
+span.public {
+	background-color: #F9E7E9;
+	color: #E42037;
+}*/
+
+/*
+.invisible {
+	visibility: hidden;
+}*/
+
+/* Main Content */
+/*div#content {
+	overflow:auto;
+	padding: 0px;
+	display: block;
+}*/
+
+/* Footer */
+/*div#footer {
+	clear: both;
+	margin-top: 10px;
+	padding: 2px;
+	font-size: smaller;
+	font-style:italic;
+	position: fixed;
+	bottom:0;
+	left:0;
+	z-index: 999;
+	background-color: #fff;
+}*/
+
+/* openbookmark additions */
+/*div #menu {
+	position: fixed;
+	top: 5px;
+	left: 10px;
+}*/
+
+/*.loading-anim {
+	background-image: url('loading.gif');
+	background-repeat:no-repeat;
+	background-position:center;
+}*/
+
+/*.mobile {
+	display:none;
+}*/
