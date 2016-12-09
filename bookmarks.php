@@ -58,14 +58,14 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			$img_d = '<i class="fa fa-caret-down"></i>';
 		}
 
-		echo '<div class="bookmarkcaption">' . "\n";
+		echo '<div class="">' . "\n";
 		if ($show_folder) {
 			echo "\t" . '<div>&nbsp;</div>' . "\n";
 		}
 		if ($show_checkbox) {
-			echo "\t\t" . '<div class="col-xs-8 col-sm-6">' . "\n";
+			echo "\t\t" . '<td>' . "\n";
 			echo "\t\t\t" . '<input type="checkbox" name="CheckAll" onClick="selectthem(\'checkall\', this.checked)">' . "\n";
-			echo "\t\t" . '</div>' . "\n";
+			echo "\t\t" . '</td>' . "\n";
 		}
 		if ($show_date) {
 			$query_data = array (
@@ -93,7 +93,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			}
 			echo "\t\t" . '</div>' . "\n";
 		}
-		echo "\t\t" . '<div class="link">' . "\n";
+		echo "\t\t" . '<td class="link">' . "\n";
 		if ($show_icon) {
 			echo "\t\t\t" . '<img src="./images/bookmark_image.gif" alt="" class="invisible">' . "\n";
 		}
@@ -101,7 +101,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		$query_string = assemble_query_string ($query_data);
 		echo "\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Title ' . $img_t . '</a>' . "\n";
 		// echo '<a id="openAll" style="font-weight:800;float:right; margin-right: 60px;" href="javascript:openAll();">[Open All]</a>';
-		echo "\t\t" . '</div>' . "\n";
+		echo "\t\t" . '</td>' . "\n";
 		echo "\t" . '</div>' . "\n\n";
 	}
 
@@ -111,10 +111,14 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		$tree = new folder;
 	}
 
-	echo '<form name="bookmarks" action="" class="form-inline">' . "\n";
+
+	echo '<form name="bookmarks" action="" class="form"><table class="table">' . "\n";
+
+
+
 
 	foreach ($bookmarks as $value) {
-		echo '<div class="row">' . "\n";
+		echo '<tr>' . "\n";
 
 		# the folders, only needed when searching for bookmarks
 		if ($show_folder) {
@@ -139,44 +143,50 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 
 		# the share, date and edit/move/delete icon section
-		echo "\t" . '<div class="col-xs-8 col-sm-6">' . "\n";
+		echo "\t" . '<td>' . "\n";
 
-		# the checkbox and favicon section
-		echo "\t" . '<div class="checkbox">' . "\n";
-		# the checkbox
-	//	if ($show_checkbox){
-			echo "\t\t" . '<label><input type="checkbox" name="' . $value['id'] . '"></label>' . "\n";
-	//	}
-		echo "\n\t</div>\n";
+					# the checkbox and favicon section
+					echo "\t" . '<td>' . "\n";
+					# the checkbox
+				//	if ($show_checkbox){
+						echo "\t\t" . '<label><input type="checkbox" name="' . $value['id'] . '"></label>' . "\n";
+				//	}
+					echo "\n\t</td>\n";
 
 
-		# the favicon
-		echo "\t" . '<div class="link">' . "\n";
-		echo "\t\t";
-		if ($show_icon){
-			if ($value['favicon'] && is_file ($value['favicon'])) {
-				echo '<img src="' . $value['favicon'] . '" width="16" height="16" alt="">' . "\n";
-			}
-			else {
-				echo $bookmark_image . "\n";
-			}
-		}
+					# the favicon
+					echo "\t" . '<td class="">' . "\n";
+					echo "\t\t";
+					if ($show_icon){
+						if ($value['favicon'] && is_file ($value['favicon'])) {
+							echo '<img src="' . $value['favicon'] . '" width="16" height="16" alt="">' . "\n";
+						}
+						else {
+							echo $bookmark_image . "\n";
+						}
+					}
 
-		# the link
-		if ($settings['open_new_window']) {
-			$target = ' target="_blank"';
-		}
-		else {
-			$target = null;
-		}
+					# the link
+					if ($settings['open_new_window']) {
+						$target = ' target="_blank"';
+					}
+					else {
+						$target = null;
+					}
 
-//		if ($show_link){
-			$link = '<a class="bookmark_href" href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
-//		}
-//		else {
-//			$link = $value['title'];
-//		}
-		echo "\t\t$link\n";
+			//		if ($show_link){
+						$link = '<a class="bookmark_href" href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
+			//		}
+			//		else {
+			//			$link = $value['title'];
+			//		}
+					echo "\t\t$link\n";
+
+
+
+
+		echo "\t</td>\n";
+
 
 
 
@@ -188,12 +198,10 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			else {
 				$css_extension = "";
 			}
-			echo "\t" . '<div class="description"' . $css_extension . '>' . $value['description'] . "</div>\n";
+			echo "\t" . '<td' . $css_extension . '>' . $value['description'] . "</td>\n";
 		}
 
 
-
-		echo "\t</div>\n";
 
 
 
@@ -207,13 +215,13 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 				if ($show_share) {
 					$share = $value['public'] ? 'public' : 'private';
-					echo "\t\t" . '<span class="' . $share . '">' . $share . "</span>\n";
+					echo "\t\t" . '<td class="' . $share . '">' . $share . "</td>\n";
 				}
 
 				if ($show_date) {
-					echo "\t\t" . '<div class="col-xs-4 col-sm-6">';
+					echo "\t\t" . '<td>';
 					echo date ($date_formats[$settings['date_format']], $value['timestamp']);
-		//			echo "\t</div>\n";
+					echo "\t</div>\n";
 				}
 
 
@@ -238,13 +246,16 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 					echo sprintf ($delete_image, "Delete");
 					echo "</a>\n";
 				}
-				echo "\t</div>\n";
 
 
-					echo "\t</div>\n";
 
-					
+					echo "\t</tr>\n";
+
+
 	}
+
+		echo "\t</table>\n";
+
 	echo "</form>\n";
 }
 
