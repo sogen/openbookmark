@@ -25,7 +25,7 @@ if (count ($bmlist) > 1) {
 			?>
 
 			<h2 class="title">Change public state:</h2>
-			<div style="width:100%; height:330px; overflow:auto;">
+			<div>
 
 			<?php
 			$bookmarks = array ();

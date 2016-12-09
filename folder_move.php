@@ -13,7 +13,7 @@ if ($sourcefolder == "") {
 	<h2 class="title">Move Folder</h2>
   <form action="<?php echo $_SERVER['SCRIPT_NAME'] . "?folderid=" . $folderid . "&expand=" . implode (",", $expand);?>" method="POST" id="fmove">
 
-			<div style="width:100%; height:330px; overflow:auto;">
+			<div>
 
 				<?php
 				$tree->make_tree (0);
@@ -43,7 +43,7 @@ else if (in_array ($sourcefolder, $parents)){
 	message ("A folder cannot be moved to one of its own subfolders");
 }
 else if ($sourcefolder != "" && $sourcefolder != $folderid){
-	$query = sprintf ("UPDATE folder SET childof='%d' WHERE id='%d' AND user='%s'", 
+	$query = sprintf ("UPDATE folder SET childof='%d' WHERE id='%d' AND user='%s'",
 		$mysql->escape ($folderid),
 		$mysql->escape ($sourcefolder),
 		$mysql->escape ($username));

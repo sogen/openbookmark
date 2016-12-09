@@ -17,7 +17,7 @@ $message2 = '';
 <h1 id="caption">Admin Page</h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+<div>
 	<!-- Menu starts here. -->
 	<div id="menu">
 		<h2 class="nav">Bookmarks</h2>
@@ -25,7 +25,7 @@ $message2 = '';
 		  <li><a href="./index.php">My Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
-	
+
 		<h2 class="nav">Tools</h2>
 		<ul class="nav">
 			<?php if (admin_only ()) { ?>
@@ -42,12 +42,12 @@ $message2 = '';
 
 	<!-- Main content starts here. -->
 	<div id="main">
-	
+
 	<?php
 	if (!admin_only ()) {
 		message ("You are not an Admin.");
 	}
-	
+
 	if ($create == 'Create') {
 		if ($new_username == '' || $new_password == '') {
 			$message1 = 'Username and Password fields must not be empty.';
@@ -56,11 +56,11 @@ $message2 = '';
 			$message1 = 'User already exists.';
 		}
 		else {
-			$query = sprintf ("INSERT INTO user (username, password, admin) VALUES ('%s', md5('%s'), '%d')", 
+			$query = sprintf ("INSERT INTO user (username, password, admin) VALUES ('%s', md5('%s'), '%d')",
 					$mysql->escape ($new_username),
 					$mysql->escape ($new_password),
 					$mysql->escape ($new_admin));
-	
+
 			if ($mysql->query ($query)) {
 				$message1 = "User $new_username created.";
 			}
@@ -71,10 +71,10 @@ $message2 = '';
 		}
 	}
 	?>
-	
-				<div style="border: 1px solid #bbb; margin: 10px; padding: 10px;">
+
+				<div>
 					<h2 class="caption">Create User</h2>
-	
+
 					<form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="POST">
 						<table>
 							<tr>
@@ -84,7 +84,7 @@ $message2 = '';
 									<input type="text" name="new_username">
 								</td>
 							</tr>
-	
+
 							<tr>
 								<td>Password:
 								</td>
@@ -92,7 +92,7 @@ $message2 = '';
 									<input type="password" name="new_password">
 								</td>
 							</tr>
-	
+
 							<tr>
 								<td>Admin:
 								</td>
@@ -100,7 +100,7 @@ $message2 = '';
 									<input type="checkbox" name="new_admin" value="1">
 								</td>
 							</tr>
-	
+
 							<tr>
 								<td>
 								</td>
@@ -110,17 +110,17 @@ $message2 = '';
 							</tr>
 						</table>
 					</form>
-	
+
 				</div>
 
-				<div style="border: 1px solid #bbb; margin: 10px; padding: 10px;">
+				<div>
 					<h2 class="caption">Delete User</h2>
 
 					<?php
 					if ($delete == 'Delete') {
 						if (check_username ($existing_user)) {
 							if ($noconfirm) {
-								$query = sprintf ("DELETE FROM user WHERE md5(username)=md5('%s')", 
+								$query = sprintf ("DELETE FROM user WHERE md5(username)=md5('%s')",
 										$mysql->escape ($existing_user));
 								if ($mysql->query ($query)) {
 									$message2 = "User $existing_user deleted.<br>";
@@ -128,14 +128,14 @@ $message2 = '';
 								else {
 									message ($mysql->error);
 								}
-					
-								$query = sprintf ("DELETE FROM bookmark WHERE md5(user)=md5('%s')", 
+
+								$query = sprintf ("DELETE FROM bookmark WHERE md5(user)=md5('%s')",
 										$mysql->escape ($existing_user));
 								if (!$mysql->query ($query)) {
 									message ($mysql->error);
 								}
-					
-								$query = sprintf ("DELETE FROM folder WHERE md5(user)=md5('%s')", 
+
+								$query = sprintf ("DELETE FROM folder WHERE md5(user)=md5('%s')",
 										$mysql->escape ($existing_user));
 								if (!$mysql->query ($query)) {
 									message ($mysql->error);
@@ -144,14 +144,14 @@ $message2 = '';
 							}
 							else {
 								?>
-								
+
 								<p>Are you sure you want to delete the user <?php echo $existing_user; ?> and all it's Bookmarks and Folders?</p>
 								<form action="<?php echo $_SERVER['SCRIPT_NAME'] . "?noconfirm=1"; ?>" method="POST" name="userdelete">
 								<input type="hidden" name="existing_user" value="<?php echo $existing_user; ?>">
 								<input type="submit" name="delete" value="Delete">
-								<input type="button" value=" Cancel " onClick="self.location.href='./admin.php'"> 
+								<input type="button" value=" Cancel " onClick="self.location.href='./admin.php'">
 								</form>
-								
+
 								<?php
 							}
 						}
@@ -163,16 +163,16 @@ $message2 = '';
 					else {
 						list_users ();
 					}
-	
+
 				function list_users () {
 					global $mysql, $message2;;
 					?>
-	
+
 					<form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="POST">
-						<div style="height: 200px; width: 300px; overflow:auto;">
+						<div>
 							<?php
 							$query = "SELECT username, admin FROM user ORDER BY username";
-			
+
 							if ($mysql->query ($query)) {
 								while ($row = mysql_fetch_object ($mysql->result)) {
 									echo '<input type="radio" name="existing_user" value="'.$row->username.'">';
@@ -191,31 +191,27 @@ $message2 = '';
 						</div>
 						<input type="submit" name="delete" value="Delete">
 						<?php echo $message2; ?>
-	
+
 					</form>
-	
+
 					<?php
 				}
-	
+
 				?>
-	
+
 				</div>
 
-				<div style="border: 1px solid #bbb; margin: 10px; padding: 10px;">
+				<div>
 						<h2 class="caption">Version</h2>
 
-						<table>
-							<tr>
-								<td>This Version:</td>
-								<td><?php @readfile (ABSOLUTE_PATH . "VERSION"); ?></td>
-							</tr>
-						
-							<tr>
-								<td><a href="http://www.frech.ch/online-bookmarks/" target="_new">Newest Version available:</a></td>
-								<td><a href="http://www.frech.ch/online-bookmarks/" target="_new"><?php echo "disabled";//check_version (); ?></a></td>
-							</tr>
-						</table>
-						
+					This Version:
+
+								<?php @readfile (ABSOLUTE_PATH . "VERSION"); ?>
+
+								<a href="http://www.frech.ch/online-bookmarks/" target="_new">Newest Version available:</a>
+								<a href="http://www.frech.ch/online-bookmarks/" target="_new"><?php echo "disabled";//check_version (); ?></a>
+
+
 						<?php
 						function check_version () {
 							$version = null;
@@ -233,7 +229,7 @@ $message2 = '';
 							return $version;
 						}
 						?>
-	
+
 				</div>
 		</div>
 

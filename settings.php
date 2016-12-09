@@ -115,7 +115,7 @@ function check_date_format () {
 <h1 id="caption">My Settings</h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+<div>
 	<!-- Menu starts here. -->
 	<div id="menu">
 		<h2 class="nav">Bookmarks</h2>
@@ -123,7 +123,7 @@ function check_date_format () {
 		  <li><a href="./index.php">My Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
-	
+
 		<h2 class="nav">Tools</h2>
 		<ul class="nav">
 			<?php if (admin_only ()) { ?>
@@ -152,70 +152,70 @@ function check_date_format () {
 						<input type="text" name="foldername" value="<?php echo $settings['root_folder_name']; ?>">
 					</td>
 				</tr>
-				
-				<tr>
+
+				<!-- <tr>
 					<td>Theme name (ex: 'dark' uses styledark.css / mobiledark.css)</td>
 					<td>
-						<input type="text" name="settings_theme" value="<?php echo @$settings['theme']; ?>">
+						<input type="text" name="settings_theme" value="<?php // echo @$settings['theme']; ?>">
 					</td>
-				</tr>
-			
+				</tr> -->
+
 				<tr>
 					<td>The width in pixels of the folder column<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_column_width_folder" value="<?php echo $settings['column_width_folder']; ?>" size="5">
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>The width in pixels of the bookmark column<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_column_width_bookmark" value="<?php echo $settings['column_width_bookmark']; ?>" size="5">
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>The height in pixels of the main table<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_table_height" value="<?php echo $settings['table_height']; ?>" size="5">
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Confirm deletions of bookmarks an folders</td>
 					<td>
 						<input type="checkbox" name="settings_confirm_delete" <?php if ($settings['confirm_delete'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Open a new window when clicking a bookmark</td>
 					<td>
 						<input type="checkbox" name="settings_open_new_window" <?php if ($settings['open_new_window'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Show the bookmarks description in the overview</td>
 					<td>
 						<input type="checkbox" name="settings_show_bookmark_description" <?php if ($settings['show_bookmark_description'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Enable favicon support: <?php echo $bookmark_image; ?></td>
 					<td>
 						<input type="checkbox" name="settings_show_bookmark_icon" <?php if ($settings['show_bookmark_icon'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Show the column with the change date: <?php echo date ($date_formats[$settings['date_format']]); ?></td>
 					<td>
 						<input type="checkbox" name="settings_show_column_date" <?php if ($settings['show_column_date'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Date format:</td>
 					<td>
@@ -244,49 +244,49 @@ function check_date_format () {
 						<input type="checkbox" name="settings_show_column_edit" <?php if ($settings['show_column_edit'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Show the column to move a bookmark: <?php echo $move_image; ?></td>
 					<td>
 						<input type="checkbox" name="settings_show_column_move" <?php if ($settings['show_column_move'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Show the column to delete a bookmark: <?php echo $delete_image; ?></td>
 					<td>
 						<input type="checkbox" name="settings_show_column_delete" <?php if ($settings['show_column_delete'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Collapse tree when clicking on folder icon: <?php echo $minus . $folder_opened; ?></td>
 					<td>
 						<input type="checkbox" name="settings_fast_folder_minus" <?php if ($settings['fast_folder_minus'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Expand tree when clicking on folder icon: <?php echo $plus . $folder_opened; ?></td>
 					<td>
 						<input type="checkbox" name="settings_fast_folder_plus" <?php if ($settings['fast_folder_plus'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Select folder when clicking on plus/minus symbol</td>
 					<td>
 						<input type="checkbox" name="settings_fast_symbol" <?php if ($settings['fast_symbol'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td>Allways open just one tree</td>
 					<td>
 						<input type="checkbox" name="settings_simple_tree_mode" <?php if ($settings['simple_tree_mode'] == 1) {echo "checked";}?>>
 					</td>
 				</tr>
-			
+
 				<tr>
 					<td></td>
 					<td>
@@ -297,7 +297,7 @@ function check_date_format () {
 			</form>
 		</td>
 
-		<td valign="top" style="width: 40%;">
+		<td valign="top">
 			<p>
 				<b><a href="javascript:chpw()">Change Password</a></b>
 			</p>
@@ -324,7 +324,7 @@ function check_date_format () {
 			<p>
 				You can add a button to your browsers "Link Bar" or "Hotlist" so that any homepage
 				can be bookmarked with one click. Title and URL of the current homepage are being preset.
-				Basically you can make OpenBookmark behave in two different ways showing its 
+				Basically you can make OpenBookmark behave in two different ways showing its
 				dialog. Either a new window pops up or it shows it in the same window.
 			</p>
 			<p>
@@ -343,7 +343,7 @@ function check_date_format () {
 				</a><br>
 			</p>
 			<p>
-				Note that if your browser has a Popup Blocker enabled you might experience difficulties using 
+				Note that if your browser has a Popup Blocker enabled you might experience difficulties using
 				the upper link.
 			</p>
 

@@ -23,7 +23,7 @@ $order = set_get_order ();
 <h1 id="caption"><?php echo $title; ?></h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+<div>
 	<!-- Menu starts here. -->
 	<div id="menu">
 		<h2 class="nav">Bookmarks</h2>
@@ -31,7 +31,7 @@ $order = set_get_order ();
 		  <li><a href="./index.php">My Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
-	
+
 		<h2 class="nav">Tools</h2>
 		<ul class="nav">
 			<?php if (isset ($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
@@ -112,7 +112,7 @@ if (isset ($_GET['user']) && check_username ($user)) {
     }
 
     ?>
-	
+
 	<!-- Bookmarks ends here. -->
 	</div>
 

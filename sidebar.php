@@ -85,62 +85,27 @@ class sidebar {
 
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>OpenBookmark</title>
-        <link rel="stylesheet" type="text/css" href="./style.css">
-		
-        <script src="./jquery/jquery.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="./style2.css">
+        <!-- <script src="./jquery/jquery.js" type="text/javascript"></script> -->
+        <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
         <script src="./jquery/jquery.treeview.js" type="text/javascript"></script>
         <script type="text/javascript">
         $(document).ready(function(){
                 $("#browser").Treeview();
         });
         </script>
-        <style type="text/css">
-                html, body {height:100%; margin: 0; padding: 0; }
-
-                html>body {
-                        font-size: 16px;
-                        font-size: 68.75%;
-                } /* Reset Base Font Size */
-
-                body {
-                        font-family: Verdana, helvetica, arial, sans-serif;
-                        font-size: 68.75%;
-                        background: #fff;
-                        color: #333;
-                        padding-left: 20px;
-                } /* Reset Font Size */
-
-                .dir, .dir ul {
-			padding: 0;
-                        margin: 0;
-                        list-style: none;
-                }
-
-                .treeview li {
-                        margin: 0;
-                        padding: 3px 0pt 3px 16px;
-                }
-
-                .dir li { padding: 2px 0 0 16px; list-style: none; }
-		.dir ul { display: none; }
-		.treeview.dir ul { display: block; }
-
-                .treeview li { background: url(./jquery/images/tv-item.gif) 0 0 no-repeat; }
-                .treeview .collapsable { background-image: url(./jquery/images/tv-collapsable.gif); }
-                .treeview .expandable { background-image: url(./jquery/images/tv-expandable.gif); }
-                .treeview .last { background-image: url(./jquery/images/tv-item-last.gif); }
-                .treeview .lastCollapsable { background-image: url(./jquery/images/tv-collapsable-last.gif); }
-                .treeview .lastExpandable { background-image: url(./jquery/images/tv-expandable-last.gif); }
-
-        </style>
-		<?php echo ($settings["theme"]!="") ? '<link rel="stylesheet" type="text/css" href="./style'.$settings["theme"].'.css" />' : ""; ?>	
+      <style type="text/css">
+      </style>
+		<?php // echo ($settings["theme"]!="") ? '<link rel="stylesheet" type="text/css" href="./style'.$settings["theme"].'.css" />' : ""; ?>
         </head>
+
+
+
         <body id="sidebarBody">
 
 <p><a href="./">Back to OpenBookmark</a></p>

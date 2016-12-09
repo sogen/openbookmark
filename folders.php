@@ -1,4 +1,12 @@
 <?php
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+?>
+
+<?php
 if (basename ($_SERVER['SCRIPT_NAME']) == basename (__FILE__)) {
 	die ("no direct access allowed");
 }
@@ -135,14 +143,14 @@ class folder {
 			$this->level--;
 		}
 	}
- 
+
 	# draws the tree
 	function print_tree ($scriptname="") {
 		global $settings, $folder_opened, $folder_closed, $folder_opened_public, $folder_closed_public, $plus, $minus, $neutral;
 
 		if ($scriptname=="")
 			$scriptname = $_SERVER['SCRIPT_NAME'];
-		
+
 		# depending on whom's bookmarks are being displayed, we set some variables differently
 		if ($this->foreign_username) {
 			$root_folder_name = $this->foreign_username . "'s Bookmarks";
@@ -164,12 +172,12 @@ class folder {
 
 		# The top folder shows up too much on the top. Draw
 		# a little space there.
-		echo '<div class="foldertop"></div>' . "\n";
+		echo '<div></div>' . "\n";
 
 		foreach ($this->tree as $key => $value) {
 			# this is the begining of the line that shows a folder
 			# with the symbol (plus, minus or neutral)
-			$spacer = '<div style="margin-left:' . $value['level'] * 20 . 'px;">';
+			$spacer = '<div>';
 			echo $spacer;
 
 			if ($value['id'] == $this->folderid) {
@@ -301,7 +309,7 @@ class folder {
 	}
 
 	###
-	### returns an array containing all folder id's that 
+	### returns an array containing all folder id's that
 	### are children from a given folder
 	###
 	function get_children ($id) {

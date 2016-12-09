@@ -114,7 +114,7 @@ class auth {
 
 			<form name="loginform" method="POST" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
 			<center>
-				<table border="0"  style="text-align:left;">
+				<table border="0">
 					<tr>
 						<td>Username:</td>
 						<td><input name="username" type="text" value="" tabindex="1"></td>

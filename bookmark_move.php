@@ -10,7 +10,7 @@ if (count ($bmlist) == 0) {
 	<h2 class="title">Move bookmarks to:</h2>
 	<form action="<?php echo $_SERVER['SCRIPT_NAME'] . "?folderid=" . $folderid; ?>" method="POST" name="bookmarksmove">
 
-				<div style="width:100%; height:330px; overflow:auto;">
+				<div>
 
 					<?php
 					require_once (ABSOLUTE_PATH . "folders.php");

@@ -6,7 +6,7 @@ logged_in_only ();
 <h1 id="caption">Import Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+<div>
 	<!-- Menu starts here. -->
 	<div id="menu">
 		<h2 class="nav">Bookmarks</h2>
@@ -14,7 +14,7 @@ logged_in_only ();
 		  <li><a href="./index.php">My Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
-	
+
 		<h2 class="nav">Tools</h2>
 		<ul class="nav">
 			<?php if (admin_only ()) { ?>
@@ -44,7 +44,7 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 		$default_browser = "netscape";
 	}
 	?>
-	
+
 	<form enctype="multipart/form-data" action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="post">
 	  <table border="0">
 	    <tr>
@@ -58,7 +58,7 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	        </select>
 	      </td>
 	    </tr>
-	
+
 	    <tr>
 	      <td>
 	        select File:
@@ -99,19 +99,19 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	        Destination Folder:
 	      </td>
 	      <td>
-	    <div style="width:<?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height:350px; overflow:auto;">
-	
+	    <div>
+
 		<?php
 		require_once (ABSOLUTE_PATH . "folders.php");
 		$tree = new folder;
 		$tree->make_tree (0);
 		$tree->print_tree ();
 		?>
-	
+
 		</div>
 	      </td>
 	    </tr>
-	
+
 	    <tr>
 	      <td>
 	      	<p><input type="button" value=" New Folder " onClick="self.location.href='javascript:foldernew(<?php echo $folderid; ?>)'"></p>
@@ -122,10 +122,10 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	      <td>
 	      </td>
 	    </tr>
-	
+
 	  </table>
 	</form>
-	
+
 	<?php
 }
 else{
@@ -175,7 +175,7 @@ class import {
 		$this->username = $username;
 		$this->parent_folder = $parentfolder;
 		$this->current_folder = $this->parent_folder;
-		
+
 		$this->folder_depth = array ();
 
 		$this->mysql = $mysql;

@@ -5,7 +5,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
           $_POST['browser'] != "opera" &&
           $_POST['browser'] != "IE")) {
 
-	# header.php is included here, because we want to print 
+	# header.php is included here, because we want to print
 	# plain text when exporting bookmarks, so that browsers
 	# can handle results better. header.php is needed only to
 	# display html.
@@ -29,7 +29,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
 <h1 id="caption">Export Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+<div style="min-width: <?php // echo 230 + $settings['column_width_folder']; ?>px;">
 	<!-- Menu starts here. -->
 	<div id="menu">
 		<h2 class="nav">Bookmarks</h2>
@@ -37,7 +37,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
 		  <li><a href="./index.php">My Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
-	
+
 		<h2 class="nav">Tools</h2>
 		<ul class="nav">
 			<?php if (admin_only ()) { ?>
@@ -92,7 +92,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
         Folder to export:
       </td>
       <td>
-	<div style="width:<?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height:350px; overflow:auto;">
+	<div style="width:<?php // echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; overflow:auto;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
@@ -144,7 +144,7 @@ else{
 
 	$browser = set_post_browser ();
 	if ($browser == "opera") {
-		$filename = "opera6.adr";
+		$filename = "opera6.html";
 	}
 	else if ($browser == "IE") {
 		$filename = "bookmark.htm";
@@ -204,11 +204,11 @@ class export {
 
 		# collect the bookmark data
 		$query = sprintf ("SELECT title, url, description, childof, id
-			FROM bookmark 
-			WHERE user='%s' 
+			FROM bookmark
+			WHERE user='%s'
 			AND deleted!='1'",
 			$mysql->escape ($username));
-	
+
 		if ($mysql->query ($query)) {
 			while ($row = mysql_fetch_assoc ($mysql->result)) {
 				if (!isset ($this->bookmarks[$row['childof']])) {
@@ -254,7 +254,7 @@ class export {
 	}
 
 	function print_folder_close () {
-		$spacer = str_repeat ("    ", $this->counter); 
+		$spacer = str_repeat ("    ", $this->counter);
 		if ($this->browser == "netscape" || $this->browser == "IE"){
 			echo $spacer . "</DL><p>\n";
 		}
@@ -264,7 +264,7 @@ class export {
 	}
 
 	function print_bookmarks ($folderid) {
-		$spacer = str_repeat ("    ", $this->counter); 
+		$spacer = str_repeat ("    ", $this->counter);
 		if (isset ($this->bookmarks[$folderid])) {
 			foreach ($this->bookmarks[$folderid] as $value) {
 				$url   = html_entity_decode ($value['url'],   ENT_QUOTES, $this->charset);
@@ -275,7 +275,7 @@ class export {
 				else {
 					$description = '';
 				}
-				
+
 				if ($this->browser == 'netscape') {
 					echo $spacer . '    <DT><A HREF="' . $url . '">' . $title . "</A>\n";
 					if ($description != '') {

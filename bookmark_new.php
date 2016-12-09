@@ -31,7 +31,7 @@ if ($post_title == '' || $post_url == '') {
 		$url = $get_url;
 	}
 	else {
-		$url = 'http://';
+		$url = '';
 	}
 	if (strtolower (basename ($_SERVER['SCRIPT_NAME'])) == 'bookmark_add.php') {
 		$js_onclick = 'history.back()';
@@ -69,7 +69,7 @@ if ($post_title == '' || $post_url == '') {
 else {
 	$query = sprintf ("INSERT INTO bookmark
 		(user, title, url, description, childof, public)
-		VALUES ('%s', '%s', '%s', '%s', '%d', '%d')", 
+		VALUES ('%s', '%s', '%s', '%s', '%d', '%d')",
 		$mysql->escape ($username),
 		$mysql->escape ($post_title),
 		$mysql->escape ($post_url),
@@ -93,7 +93,7 @@ else {
 		require_once (ABSOLUTE_PATH . "favicon.php");
 		$favicon = new favicon ($post_url);
 		if (isset ($favicon->favicon)) {
-			$query = sprintf ("UPDATE bookmark set favicon='%s' WHERE user='%s' AND id='%d'", 
+			$query = sprintf ("UPDATE bookmark set favicon='%s' WHERE user='%s' AND id='%d'",
 				$mysql->escape ($favicon->favicon),
 				$mysql->escape ($username),
 				$mysql->escape ($bm_id));

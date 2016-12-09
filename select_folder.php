@@ -5,7 +5,7 @@ logged_in_only ();
 
 <h2 class="title">Select Folder</h2>
 
-			<div style="width:100%; height:330px; overflow:auto;">
+			<div>
 
 				<?php
 				require_once ('./folders.php');

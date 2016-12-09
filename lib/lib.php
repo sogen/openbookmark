@@ -1,25 +1,25 @@
 <?php
 
-function is_mobile_browser(){
-	//manual override to show mobiel
-	if (@$_GET['mobile'] == "1")
-		return true;
-
-	//detect mobile
-	$device = false;
-	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
-		$device = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'ipod') || strstr($_SERVER['HTTP_USER_AGENT'],'ipod') ) {
-		$device = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
-		$device = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
-		$device = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
-		$device = true;
-	}
-	return $device;
-}
+// function is_mobile_browser(){
+// 	//manual override to show mobiel
+// 	if (@$_GET['mobile'] == "1")
+// 		return true;
+//
+// 	//detect mobile
+// 	$device = false;
+// 	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+// 		$device = true;
+// 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'ipod') || strstr($_SERVER['HTTP_USER_AGENT'],'ipod') ) {
+// 		$device = true;
+// 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+// 		$device = true;
+// 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+// 		$device = true;
+// 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+// 		$device = true;
+// 	}
+// 	return $device;
+// }
 
 ###
 ### prints a message and exits the application properly
@@ -461,9 +461,7 @@ function print_footer () {
 	//echo "<br>\n";
 
 	echo '<a class="footer" href="XXXXXXXXX" target="_blank">XXXXXXXX</a>' . "\n";
-	// echo ' Copyright. <br />OpenBookmark ';
-	// @readfile (ABSOLUTE_PATH . "VERSION");
-	echo ' (C) dracflamloc @ <a href="https://github.com/dracflamloc/openbookmark">github.com</a>';
+	// echo ' (C) dracflamloc @ <a href="https://github.com/dracflamloc/openbookmark">github.com</a>';
 	echo "</p>\n";
 }
 
