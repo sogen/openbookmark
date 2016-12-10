@@ -14,7 +14,7 @@ else if (!$settings['confirm_delete'] || set_get_noconfirm ()){
 		$mysql->escape ($username));
 	if ($mysql->query ($query)) {
 		echo "Bookmarks successfully deleted<br>\n";
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

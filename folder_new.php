@@ -7,7 +7,7 @@ $public = set_post_bool_var ("public", false);
 
 if ($foldername == "") {
 	?>
-	
+
 	<h2 class="title">New Folder</h2>
 	<form action="<?php echo $_SERVER['SCRIPT_NAME'] . "?folderid=" . $folderid; ?>" id="fnew" method="POST">
 	<p><input type=text name="foldername" size="50" value="<?php echo $foldername; ?>"></p>
@@ -19,7 +19,7 @@ if ($foldername == "") {
 	this.focus();
 	document.getElementById('fnew').foldername.focus();
 	</script>
-	
+
 	<?php
 }
 else {
@@ -30,7 +30,7 @@ else {
 		$mysql->escape ($username));
 	if ($mysql->query ($query)) {
 		echo "Folder successfully created<br>\n";
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

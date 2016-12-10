@@ -52,8 +52,6 @@ $order = set_get_order ();
 			var folderurl=url.replace('index.php','async_folders.php');
 			var bookmarkurl=url.replace('index.php','async_bookmarks.php');
 
-
-
 			selected_folder_id = $(this).attr("folderid");
 
 			$(".folders").addClass("loading-anim");
@@ -89,7 +87,6 @@ $order = set_get_order ();
 	<?php // endif; ?>
 
 
-
 	<!-- Menu starts here. -->
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -121,12 +118,9 @@ $order = set_get_order ();
 								  <li><a href="javascript:bookmarkmove(checkselected())">Move Bookmarks</a></li>
 								  <li><a href="javascript:bookmarkdelete(checkselected())">Delete Bookmarks</a></li>
 								  <li><a href="./shared.php">Shared Bookmarks</a></li>
-
 						</ul>
 					</li>
 				</ul>
-
-
 
 	      <ul class="nav navbar-nav">
 	        <li class="dropdown">
@@ -151,13 +145,6 @@ $order = set_get_order ();
 	        </div>
 					<input type="submit" class="btn btn-default" value="Go" name="submit"/>
 				</form>
-
-	      <!-- <form class="navbar-form navbar-left">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
-	        </div>
-	        <button type="submit" class="btn btn-default">Submit</button>
-	      </form> -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <!-- <li><a href="#">Link</a></li> -->
 	        <li class="dropdown">
@@ -171,7 +158,6 @@ $order = set_get_order ();
 							<li><a href="./index.php?search=[dupe_check_bookmarks]">Find Duplicates</a></li>
 							<li><a href="./sidebar.php">View as Sidebar</a></li>
 							<li><a href="./settings.php"><?php echo $username; ?>&#039;s Settings</a></li>
-
 	          </ul>
 	        </li>
 					<li><a href="./index.php?logout=1">Logout</a></li>
@@ -179,7 +165,6 @@ $order = set_get_order ();
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-
 
 
 
@@ -244,16 +229,12 @@ $order = set_get_order ();
 
 			</div>
 
-			<?php else: ?>
 
-
-
-
+<?php else: ?>
 
 
 
 <!--
-
 ########  #######  ##       ########  ######## ########   ######
 ##       ##     ## ##       ##     ## ##       ##     ## ##    ##
 ##       ##     ## ##       ##     ## ##       ##     ## ##
@@ -265,11 +246,8 @@ $order = set_get_order ();
 -->
 
 
-
-
-
-				<div class="row">
-				  <div class="col-md-4">
+	<div class="row">
+		<div class="col-md-4">
 
 
 						<!-- Folders starts here. -->
@@ -287,9 +265,6 @@ $order = set_get_order ();
 
 
 
-
-
-
 					</div><!-- figlet: Banner3
 
 ########   #######   #######  ##    ## ##     ##    ###    ########  ##    ##  ######
@@ -302,10 +277,7 @@ $order = set_get_order ();
 
 					--><div class="col-md-8">
 
-
 							<!-- Bookmarks starts here. -->
-
-
 							<?php
 
 							require_once (ABSOLUTE_PATH . "bookmarks.php");
@@ -347,23 +319,8 @@ $order = set_get_order ();
 									<?php endif; ?>
 
 
-
-
-
-
-
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
 
 
 	<!-- Main content ends here. -->

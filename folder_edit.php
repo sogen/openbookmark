@@ -10,7 +10,7 @@ if ($folderid == "" || $folderid == "0"){
 	message ("No Folder selected");
 }
 else if ($foldername == "") {
-	$query = sprintf ("SELECT name, public FROM folder WHERE id='%d' AND user='%s' AND deleted!='1'", 
+	$query = sprintf ("SELECT name, public FROM folder WHERE id='%d' AND user='%s' AND deleted!='1'",
 		$mysql->escape ($folderid),
 		$mysql->escape ($username));
 
@@ -74,7 +74,7 @@ else {
 					$mysql->escape ($sub_folders),
 					$mysql->escape ($username));
 				if ($mysql->query ($query)) {
-					echo '<script language="JavaScript">reloadclose();</script>';
+					echo '<script type="text/javascript">reloadclose();</script>';
 				}
 				else {
 					message ($mysql->error);
@@ -86,14 +86,14 @@ else {
 					$mysql->escape ($folderid),
 					$mysql->escape ($username));
 				if ($mysql->query ($query)) {
-					echo '<script language="JavaScript">reloadclose();</script>';
+					echo '<script type="text/javascript">reloadclose();</script>';
 				}
 				else {
 					message ($mysql->error);
 				}
 			}
 		}
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

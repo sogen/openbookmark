@@ -58,13 +58,15 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			$img_d = '<i class="fa fa-caret-down"></i>';
 		}
 
-		echo '<div class="">' . "\n";
+		echo '<div class="container-fluid"><div class="row">' . "\n";
 		if ($show_folder) {
 			echo "\t" . '<div>&nbsp;</div>' . "\n";
 		}
 		if ($show_checkbox) {
 			echo "\t\t" . '<td>' . "\n";
-			echo "\t\t\t" . '<input type="checkbox" name="CheckAll" onClick="selectthem(\'checkall\', this.checked)">' . "\n";
+			echo "\t\t\t" . '<div class="checkbox">
+    <label><input type="checkbox" name="CheckAll" onClick="selectthem(\'checkall\', this.checked)"> Check All  </label>
+  </div>' . "\n";
 			echo "\t\t" . '</td>' . "\n";
 		}
 		if ($show_date) {
@@ -77,10 +79,10 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 				$query_data['user'] = $user;
 			}
 			$query_string = assemble_query_string ($query_data);
-			echo "\t\t" . '<div class="bmright">' . "\n";
-			echo "\t\t\t" . '<span class="date">' . "\n";
-			echo "\t\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="">Date ' . $img_d . '</a>' . "\n";
-			echo "\t\t\t" . '</span>' . "\n";
+			echo "\t\t" . '<div class="col-xs-6 col-sm-4">' . "\n";
+			echo "\t\t\t" . '' . "\n";
+			echo "\t\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="">Date ' . $img_d . '</a></div>' . "\n";
+			echo "\t\t\t" . '' . "\n";
 
 			if ($show_edit) {
 				echo "\t\t\t" . '<i class="fa fa-pencil-square-o invisible"></i>' . "\n";
@@ -91,15 +93,15 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			if ($show_delete) {
 				echo "\t\t\t" . '<i class="fa fa-times invisible"></i>' . "\n";
 			}
-			echo "\t\t" . '</div>' . "\n";
+			// echo "\t\t" . '</div>' . "\n";
 		}
-		echo "\t\t" . '<td class="link">' . "\n";
+		echo "\t\t" . '<td>' . "\n";
 		if ($show_icon) {
-			echo "\t\t\t" . '<img src="./images/bookmark_image.gif" alt="" class="invisible">' . "\n";
+			echo "\t\t\t" . '<i class="fa fa-bookmark invisible"></i>' . "\n";
 		}
 		$query_data ['order'] = $sort_t;
 		$query_string = assemble_query_string ($query_data);
-		echo "\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Title ' . $img_t . '</a>' . "\n";
+		echo "\t\t\t" . '<div class="col-xs-6 col-sm-4"><a href="' . $scriptname . '?' . $query_string . '" class="blink">Title ' . $img_t . '</a>' . "\n";
 		// echo '<a id="openAll" style="font-weight:800;float:right; margin-right: 60px;" href="javascript:openAll();">[Open All]</a>';
 		echo "\t\t" . '</td>' . "\n";
 		echo "\t" . '</div>' . "\n\n";
@@ -112,13 +114,20 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 	}
 
 
+
+// start of the table
 	echo '<form name="bookmarks" action="" class="form"><table class="table">' . "\n";
 
 
 
-
+// Start of ForEach
 	foreach ($bookmarks as $value) {
 		echo '<tr>' . "\n";
+
+
+						# the share, date and edit/move/delete icon section
+						echo "\t" . '<td>' . "\n";
+
 
 		# the folders, only needed when searching for bookmarks
 		if ($show_folder) {
@@ -142,50 +151,53 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 
 
-		# the share, date and edit/move/delete icon section
+
+// echo "</div>\n\n";
+
+
+
+
+		# the checkbox and favicon section
 		echo "\t" . '<td>' . "\n";
-
-					# the checkbox and favicon section
-					echo "\t" . '<td>' . "\n";
-					# the checkbox
-				//	if ($show_checkbox){
-						echo "\t\t" . '<label><input type="checkbox" name="' . $value['id'] . '"></label>' . "\n";
-				//	}
-					echo "\n\t</td>\n";
-
-
-					# the favicon
-					echo "\t" . '<td class="">' . "\n";
-					echo "\t\t";
-					if ($show_icon){
-						if ($value['favicon'] && is_file ($value['favicon'])) {
-							echo '<img src="' . $value['favicon'] . '" width="16" height="16" alt="">' . "\n";
-						}
-						else {
-							echo $bookmark_image . "\n";
-						}
-					}
-
-					# the link
-					if ($settings['open_new_window']) {
-						$target = ' target="_blank"';
-					}
-					else {
-						$target = null;
-					}
-
-			//		if ($show_link){
-						$link = '<a class="bookmark_href" href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
-			//		}
-			//		else {
-			//			$link = $value['title'];
-			//		}
-					echo "\t\t$link\n";
+		# the checkbox
+	//	if ($show_checkbox){
+			echo "\t\t" . '<label><input type="checkbox" name="' . $value['id'] . '"></label>' . "\n";
+	//	}
+		echo "\n\t</td>\n";
 
 
 
 
-		echo "\t</td>\n";
+		# the favicon
+		echo "\t" . '<td class="">' . "\n";
+		echo "\t\t";
+		if ($show_icon){
+			if ($value['favicon'] && is_file ($value['favicon'])) {
+				echo '<img src="' . $value['favicon'] . '" width="16" height="16" alt="">' . "\n";
+			}
+			else {
+				echo $bookmark_image . "\n";
+			}
+		}
+
+		# the link
+		if ($settings['open_new_window']) {
+			$target = ' target="_blank"';
+		}
+		else {
+			$target = null;
+		}
+
+//		if ($show_link){
+			$link = '<a class="bookmark_href" href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
+//		}
+//		else {
+//			$link = $value['title'];
+//		}
+		echo "\t\t$link\n";
+
+
+echo "\t</td>\n";
 
 
 
@@ -208,48 +220,67 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 
 
-		echo "</div>\n\n";
-
-
-
-
+// SHARE STATUS
 				if ($show_share) {
-					$share = $value['public'] ? 'public' : 'private';
+					$share = $value['public'] ? 'PUBLIC' : 'Private';
 					echo "\t\t" . '<td class="' . $share . '">' . $share . "</td>\n";
 				}
 
+
+
+// DATE
 				if ($show_date) {
 					echo "\t\t" . '<td>';
 					echo date ($date_formats[$settings['date_format']], $value['timestamp']);
-					echo "\t</div>\n";
+					echo "\t</td>\n";
 				}
 
 
 
-				# the edit column
-				if ($show_edit) {
-					echo "\t\t" . '<a href="javascript:bookmarkedit(\'' . $value['id'] . '\')">';
-					echo sprintf ($edit_image, "Edit");
-					echo "</a>\n";
-				}
 
-				# the move column
-				if ($show_move) {
-					echo "\t\t" . '<a class="bookmark-move" href="javascript:bookmarkmove(\'' . $value['id'] . '\', \'' . 'expand=' . implode (",", $expand) . '&amp;folderid=' . $folderid . '\')">';
-					echo sprintf ($move_image, "Move");
-					echo "</a>\n";
-				}
-
-				# the delete column
-				if ($show_delete) {
-					echo "\t\t" . '<a href="javascript:bookmarkdelete(\'' . $value['id'] . '\')">';
-					echo sprintf ($delete_image, "Delete");
-					echo "</a>\n";
-				}
+// ######## ########  #### ########  ######
+// ##       ##     ##  ##     ##    ##    ##
+// ##       ##     ##  ##     ##    ##
+// ######   ##     ##  ##     ##     ######
+// ##       ##     ##  ##     ##          ##
+// ##       ##     ##  ##     ##    ##    ##
+// ######## ########  ####    ##     ######
 
 
 
-					echo "\t</tr>\n";
+echo '<td>' . "\n";
+								# the edit column
+								if ($show_edit) {
+									echo "\t\t" . '<a href="javascript:bookmarkedit(\'' . $value['id'] . '\')">';
+									echo sprintf ($edit_image, "Edit");
+									echo "</a>\n";
+								}
+
+								# the move column
+								if ($show_move) {
+									echo "\t\t" . '<a class="bookmark-move" href="javascript:bookmarkmove(\'' . $value['id'] . '\', \'' . 'expand=' . implode (",", $expand) . '&amp;folderid=' . $folderid . '\')">';
+									echo sprintf ($move_image, "Move");
+									echo "</a>\n";
+								}
+
+								# the delete column
+								if ($show_delete) {
+									echo "\t\t" . '<a href="javascript:bookmarkdelete(\'' . $value['id'] . '\')">';
+									echo sprintf ($delete_image, "Delete");
+									echo "</a>\n";
+								}
+
+
+echo "\t</td>\n";
+
+
+
+
+
+
+// end of the ForEach
+echo "\t</tr>\n";
+
 
 
 	}

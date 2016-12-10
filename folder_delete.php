@@ -6,7 +6,7 @@ $noconfirm = set_get_noconfirm ();
 
 # the root folder cannot be deleted
 if ($folderid == "" || $folderid == 0){
-	message ("No Folder selected");	
+	message ("No Folder selected");
 }
 else if (!$settings['confirm_delete'] || $noconfirm) {
 	# lets do the deletion if the confirm variable is set to FALSE or after confirmation
@@ -26,7 +26,7 @@ else if (!$settings['confirm_delete'] || $noconfirm) {
 	array_push ($tree->get_children, $folderid);
 	$folders = implode (",", $tree->get_children);
 	# first delete all subfolders
-	$query = sprintf ("DELETE FROM folder WHERE childof IN (%s) AND user='%s'", 
+	$query = sprintf ("DELETE FROM folder WHERE childof IN (%s) AND user='%s'",
 		$mysql->escape ($folders),
 		$mysql->escape ($username));
 	if (!$mysql->query ($query)) {
@@ -34,7 +34,7 @@ else if (!$settings['confirm_delete'] || $noconfirm) {
 	}
 
 	# of course, we want to delete all bookmarks as well
-	$query = sprintf ("DELETE FROM bookmark WHERE childof IN (%s) AND user='%s'", 
+	$query = sprintf ("DELETE FROM bookmark WHERE childof IN (%s) AND user='%s'",
 		$mysql->escape ($folders),
 		$mysql->escape ($username));
 	if (!$mysql->query ($query)) {
@@ -42,7 +42,7 @@ else if (!$settings['confirm_delete'] || $noconfirm) {
 	}
 
 	# now delete the folder itself
-	$query = sprintf ("DELETE FROM folder WHERE id=%d AND user='%s'", 
+	$query = sprintf ("DELETE FROM folder WHERE id=%d AND user='%s'",
 		$mysql->escape ($folderid),
 		$mysql->escape ($username));
 	if (!$mysql->query ($query)) {
@@ -51,7 +51,7 @@ else if (!$settings['confirm_delete'] || $noconfirm) {
 
 	?>
 
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 function reloadparentwindow() {
   var path = window.opener.document.URL;
@@ -82,7 +82,7 @@ reloadparentwindow();
 else {
 	# if there was no confirmation, as to _really_ delete the whole stuff
 	# print the verification form
-	$query = sprintf ("SELECT name, public FROM folder WHERE id=%d AND user='%s' AND deleted!='1'", 
+	$query = sprintf ("SELECT name, public FROM folder WHERE id=%d AND user='%s' AND deleted!='1'",
 		$mysql->escape ($folderid),
 		$mysql->escape ($username));
 

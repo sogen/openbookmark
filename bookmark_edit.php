@@ -76,7 +76,7 @@ if (count ($bmlist) > 1) {
 					$mysql->escape ($username));
 		if ($mysql->query ($query)) {
 			echo "Bookmark successfully updated<br>\n";
-			echo '<script language="JavaScript">reloadclose();</script>';
+			echo '<script type="text/javascript">reloadclose();</script>';
 		}
 		else {
 			message ($mysql->error);
@@ -178,7 +178,7 @@ else {
 				$mysql->escape ($username));
 	if ($mysql->query ($query)) {
 		echo "Bookmark successfully updated<br>\n";
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

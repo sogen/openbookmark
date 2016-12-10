@@ -45,7 +45,7 @@ else {
 
 	if ($mysql->query ($query)) {
 		echo "Bookmarks moved<br>\n";
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

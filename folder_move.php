@@ -37,7 +37,7 @@ if ($sourcefolder == "") {
 	<?php
 }
 else if ($sourcefolder == $folderid) {
-	echo '<script language="JavaScript">self.close();</script>';
+	echo '<script type="text/javascript">self.close();</script>';
 }
 else if (in_array ($sourcefolder, $parents)){
 	message ("A folder cannot be moved to one of its own subfolders");
@@ -50,7 +50,7 @@ else if ($sourcefolder != "" && $sourcefolder != $folderid){
 
 	if ($mysql->query ($query)) {
 		echo "Folder moved<br>\n";
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 	}
 	else {
 		message ($mysql->error);

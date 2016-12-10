@@ -110,12 +110,12 @@ else {
 		echo 'Open '.$folder_opened.' <a href="./index.php'.$query_string.'">folder</a> containing new Bookmark<br>' . "\n";
 	}
 	else {
-		echo '<script language="JavaScript">reloadclose();</script>';
+		echo '<script type="text/javascript">reloadclose();</script>';
 		# I know, the following is ugly, but I found no other way to do.
 		# When creating a bookmark out of the personal toolbar, there is no
 		# window.opener that can be closed. Thus javascript exits with an error
 		# without finishing itself (self.close()).
-		echo '<script language="JavaScript">self.close();</script>';
+		echo '<script type="text/javascript">self.close();</script>';
 	}
 }
 require_once (ABSOLUTE_PATH . "footer.php");
