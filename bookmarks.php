@@ -197,21 +197,26 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		echo "\t\t$link\n";
 
 
+
+				# the description and if not empty
+				if ($show_desc && $value['description'] != "") {
+					if ($show_folder) {
+						$css_extension = '';
+					}
+					else {
+						$css_extension = "";
+					}
+					echo "\t" . '<p' . $css_extension . '><small>' . $value['description'] . "</small></p>\n";
+				}
+
+
+
+
+
 echo "\t</td>\n";
 
 
 
-
-		# the description and if not empty
-		if ($show_desc && $value['description'] != "") {
-			if ($show_folder) {
-				$css_extension = '';
-			}
-			else {
-				$css_extension = "";
-			}
-			echo "\t" . '<td' . $css_extension . '>' . $value['description'] . "</td>\n";
-		}
 
 
 
@@ -221,8 +226,9 @@ echo "\t</td>\n";
 
 
 // SHARE STATUS
+// these should be named "Warning" for Public ones, and -blank- for Private
 				if ($show_share) {
-					$share = $value['public'] ? 'PUBLIC' : 'Private';
+					$share = $value['public'] ? 'PUBLIC!' : 'Private';
 					echo "\t\t" . '<td class="' . $share . '">' . $share . "</td>\n";
 				}
 

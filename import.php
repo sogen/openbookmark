@@ -1,33 +1,34 @@
 <?php
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+?>
+
+
+<?php
 require_once ("./header.php");
 logged_in_only ();
 ?>
+
+
+
+<!-- Menu -->
+		<?php
+		require_once ("./menu.php");
+		logged_in_only ();
+		?>
+
+
+
 
 <h1 id="caption">Import Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
 <div>
 	<!-- Menu starts here. -->
-	<div id="menu">
-		<h2 class="nav">Bookmarks</h2>
-		<ul class="nav">
-		  <li><a href="./index.php">My Bookmarks</a></li>
-		  <li><a href="./shared.php">Shared Bookmarks</a></li>
-		</ul>
 
-		<h2 class="nav">Tools</h2>
-		<ul class="nav">
-			<?php if (admin_only ()) { ?>
-			<li><a href="./admin.php">Admin</a></li>
-			<?php } ?>
-			<li><a href="./import.php">Import</a></li>
-			<li><a href="./export.php">Export</a></li>
-			<li><a href="./sidebar.php">View as Sidebar</a></li>
-			<li><a href="./settings.php">Settings</a></li>
-			<li><a href="./index.php?logout=1">Logout</a></li>
-		</ul>
-	<!-- Menu ends here. -->
-	</div>
 
 	<!-- Main content starts here. -->
 	<div id="main">
@@ -46,7 +47,7 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	?>
 
 	<form enctype="multipart/form-data" action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="post">
-	  <table border="0">
+	  <table class="table">
 	    <tr>
 	      <td>
 	        from Browser:
@@ -54,7 +55,7 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	      <td>
 	        <select name="browser">
 	          <option value="netscape"<?php if ($default_browser=="netscape"){echo " selected";} ?>>Netscape / Mozilla / IE</option>
-	          <option value="opera"<?php if ($default_browser=="opera"){echo " selected";} ?>>Opera .adr</option>
+	          <option value="opera"<?php if ($default_browser=="opera"){echo " selected";} ?>>Opera</option>
 	        </select>
 	      </td>
 	    </tr>

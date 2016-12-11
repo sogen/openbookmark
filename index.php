@@ -87,84 +87,13 @@ $order = set_get_order ();
 	<?php // endif; ?>
 
 
-	<!-- Menu starts here. -->
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="#">Brand</a>
-	    </div>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-				<ul class="nav navbar-nav">
-					<!-- <li class="active"><a href="index.php">Link <span class="sr-only">(current)</span></a></li> -->
-					<li><a href="index.php">Home</a></li>
-					<li><a href="javascript:bookmarknew('<?php echo $folderid; ?>')">New Bookmark</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookmarks <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-									<?php if ($search_mode) { ?>
-									<li><a href="./index.php"><?php echo $settings['root_folder_name']; ?></a></li>
-									<?php } ?>
-								  <li><a href="javascript:bookmarkedit(checkselected())">Edit Bookmarks</a></li>
-								  <li><a href="javascript:bookmarkmove(checkselected())">Move Bookmarks</a></li>
-								  <li><a href="javascript:bookmarkdelete(checkselected())">Delete Bookmarks</a></li>
-								  <li><a href="./shared.php">Shared Bookmarks</a></li>
-						</ul>
-					</li>
-				</ul>
-
-	      <ul class="nav navbar-nav">
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Folders <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-							<li><a href="javascript:foldernew('<?php echo $folderid; ?>')">New Folder</a></li>
-							<li><a href="javascript:folderedit('<?php echo $folderid; ?>')">Edit Folder</a></li>
-							<li><a href="javascript:foldermove('<?php echo $folderid; ?>')">Move Folder</a></li>
-							<li><a href="javascript:folderdelete('<?php echo $folderid; ?>')">Delete Folder</a></li>
-							<li><a href="./index.php?expand=&amp;folderid=0">Collapse All</a></li>
-							<li role="separator" class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-				<!-- SEARCH FORM -->
-				<form class="navbar-form navbar-left" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="GET">
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Search" name="search" value="<?php echo $search; ?>"/>
-	        </div>
-					<input type="submit" class="btn btn-default" value="Go" name="submit"/>
-				</form>
-	      <ul class="nav navbar-nav navbar-right">
-	        <!-- <li><a href="#">Link</a></li> -->
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-							<?php if (admin_only ()) { ?>
-							<li><a href="./admin.php">Admin</a></li>
-							<?php } ?>
-							<li><a href="./import.php">Import</a></li>
-							<li><a href="./export.php">Export</a></li>
-							<li><a href="./index.php?search=[dupe_check_bookmarks]">Find Duplicates</a></li>
-							<li><a href="./sidebar.php">View as Sidebar</a></li>
-							<li><a href="./settings.php"><?php echo $username; ?>&#039;s Settings</a></li>
-	          </ul>
-	        </li>
-					<li><a href="./index.php?logout=1">Logout</a></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
+<!-- Menu -->
+		<?php
+		require_once ("./menu.php");
+		logged_in_only ();
+		?>
 
 
 
@@ -179,7 +108,7 @@ $order = set_get_order ();
 			<div>
 
 				<div>
-					<a href="./index.php"><i class="fa fa-camera-retro"></i> fa-camera-retro<img src="./images/folder_open.gif" alt=""> My Bookmarks </a>
+					<a href="./index.php"><i class="fa fa-folder-open"></i>My Bookmarks </a>
 				</div>
 
 					<?php
@@ -247,7 +176,7 @@ $order = set_get_order ();
 
 
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 
 
 						<!-- Folders starts here. -->
@@ -275,7 +204,7 @@ $order = set_get_order ();
 ##     ## ##     ## ##     ## ##   ##  ##     ## ##     ## ##    ##  ##   ##  ##    ##
 ########   #######   #######  ##    ## ##     ## ##     ## ##     ## ##    ##  ######
 
-					--><div class="col-md-8">
+					--><div class="col-md-9">
 
 							<!-- Bookmarks starts here. -->
 							<?php

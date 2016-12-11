@@ -10,7 +10,7 @@ $confirm = set_get_string_var ('confirm');
 if ($reg_register) {
 	if ($reg_username != "") {
 					if (check_username ($reg_username)) {
-						echo '<div style="color:red;">$username is an already registered user. Choose another one.</div>'."\n";
+						echo '<p class="text-danger">$username is an already registered user. Choose another one.</p>'."\n";
 						$username = false;
 					}
 					else {
@@ -18,14 +18,14 @@ if ($reg_register) {
 					}
 	}
 	else {
-		echo '<div style="color:red;">Please enter a Username.</div>'."\n";
+		echo '<p class="text-danger">Please enter a Username.</p>'."\n";
 		$username = false;
 	}
 
 	if (isset ($_POST['reg_password1']) && $_POST['reg_password1'] != "" &&
 		  isset ($_POST['reg_password2']) && $_POST['reg_password2'] != "") {
 		if (md5 ($_POST['reg_password1']) != md5 ($_POST['reg_password2'])) {
-			echo '<div style="color:red;">Passwords do not match.</div>'."\n";
+			echo '<p class="text-danger">Passwords do not match.</p>'."\n";
 			$password = false;
 		}
 		else {
@@ -33,7 +33,7 @@ if ($reg_register) {
 		}
 	}
 	else {
-		echo '<div style="color:red;">Please fill out both password fields.</div>'."\n";
+		echo '<p class="text-danger">Please fill out both password fields.</p>'."\n";
 		$password = false;
 	}
 
@@ -42,7 +42,7 @@ if ($reg_register) {
 			$query = "SELECT COUNT(*) AS result FROM user WHERE email='$reg_email'";
 			if ($mysql->query ($query)) {
 				if (mysql_result ($result, 0) > 0) {
-					echo '<div style="color:red;">A User Account with this email address aready exists.</div>'."\n";
+					echo '<p class="text-danger">A User Account with this email address aready exists.</p>'."\n";
 					$email = false;
 				}
 				else {
@@ -55,12 +55,12 @@ if ($reg_register) {
 			}
 		}
 		else {
-			echo '<div style="color:red;">Email address is invalid.</div>'."\n";
+			echo '<p class="text-danger">Email address is invalid.</p>'."\n";
 			$email = false;
 		}
 	}
 	else {
-		echo '<div style="color:red;">Please enter a valid email address.</div>'."\n";
+		echo '<p class="text-danger">Please enter a valid email address.</p>'."\n";
 		$email = false;
 	}
 
@@ -73,7 +73,7 @@ if ($reg_register) {
 
 		if (mysql_query ("$query")) {
 			# dieser key wird als username und secret md5 hash an den
-			# user geschickt und für die verifikation der registrierung gebraucht.
+			# user geschickt und fï¿½r die verifikation der registrierung gebraucht.
 			$key = md5 ($username . $secret);
 
 			$headers = "From: noreply@yourdomain.com\r\n" .
@@ -125,7 +125,7 @@ function display_register_form () {
 ?>
 
 <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" name="loginform">
-<table border="0">
+<table class="table">
 	<tr>
 		<td>Username:</td>
 		<td><input name="reg_username" type="text" value=""></td>

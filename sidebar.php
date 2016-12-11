@@ -72,7 +72,7 @@ class sidebar {
                 if (isset ($this->bookmarks[$folderid])) {
                         foreach ($this->bookmarks[$folderid] as $value) {
                                 if ($value['favicon'] && is_file ($value['favicon'])) {
-                                        $icon = '<img src="' . $value['favicon'] . '" width="16" height="16" border="0" alt="">';
+                                        $icon = '<img src="' . $value['favicon'] . '" width="16" height="16" alt="">';
                                 }
                                 else {
                                         $icon = '<img src="./jquery/images/file.gif" alt="">';

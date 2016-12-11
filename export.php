@@ -1,4 +1,13 @@
 <?php
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+?>
+
+
+<?php
 
 if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
          ($_POST['browser'] != "netscape" &&
@@ -26,38 +35,31 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
 	}
 ?>
 
+
+
+
+<!-- Menu -->
+		<?php
+		require_once ("./menu.php");
+		logged_in_only ();
+		?>
+
+
+
+
 <h1 id="caption">Export Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
-<div style="min-width: <?php // echo 230 + $settings['column_width_folder']; ?>px;">
+<div>
 	<!-- Menu starts here. -->
-	<div id="menu">
-		<h2 class="nav">Bookmarks</h2>
-		<ul class="nav">
-		  <li><a href="./index.php">My Bookmarks</a></li>
-		  <li><a href="./shared.php">Shared Bookmarks</a></li>
-		</ul>
 
-		<h2 class="nav">Tools</h2>
-		<ul class="nav">
-			<?php if (admin_only ()) { ?>
-			<li><a href="./admin.php">Admin</a></li>
-			<?php } ?>
-			<li><a href="./import.php">Import</a></li>
-			<li><a href="./export.php">Export</a></li>
-			<li><a href="./sidebar.php">View as Sidebar</a></li>
-			<li><a href="./settings.php">Settings</a></li>
-			<li><a href="./index.php?logout=1">Logout</a></li>
-		</ul>
-	<!-- Menu ends here. -->
-	</div>
 
 	<!-- Main content starts here. -->
 	<div id="main">
 		<div id="content">
 
 <form enctype="multipart/form-data" action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="POST">
-  <table border="0">
+  <table class="table">
     <tr>
       <td>
         Export Bookmarks to Browser:
@@ -66,7 +68,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
         <select name="browser">
           <option value="IE"<?php if ($default_browser == "IE") {echo " selected"; } ?>>Internet Explorer</option>
           <option value="netscape"<?php if ($default_browser == "netscape") {echo " selected"; } ?>>Netscape / Mozilla</option>
-          <option value="opera"<?php if ($default_browser == "opera") {echo " selected"; } ?>>Opera .adr</option>
+          <option value="opera"<?php if ($default_browser == "opera") {echo " selected"; } ?>>Opera</option>
         </select>
       </td>
     </tr>
@@ -92,7 +94,7 @@ if (!isset ($_POST['browser']) || $_POST['browser'] == "" ||
         Folder to export:
       </td>
       <td>
-	<div style="width:<?php // echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; overflow:auto;">
+	<div>
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
