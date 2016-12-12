@@ -40,11 +40,12 @@ require_once (ABSOLUTE_PATH . "lib/login.php");
 		<!-- <link rel="stylesheet" type="text/css" href="./js/jquery_ui/css/smoothness/jquery-ui-1.9.2.custom.min.css" /> -->
 		<script type="text/javascript" src="./lib/lib.js"></script>
 		<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="./js/jquery_ui/js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="./js/jquery_ui/js/jquery-ui.min.js"></script> -->
 		<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
 		<link rel="shortcut icon" href="favicon.ico"/>
 		</head>
 <body>
+
 
 <?php
 
