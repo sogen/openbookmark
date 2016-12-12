@@ -32,7 +32,7 @@ if (isset ($_SESSION)) {
 			else {
 				message ($mysql->error);
 			}
-		
+
 			unset ($settings['password']);
 		}
 		else {
@@ -66,9 +66,9 @@ function default_settings () {
 		'show_bookmark_icon' => true,
 		'show_column_date' => true,
 		'date_format' => '0',
-		'show_column_edit' => false,
-		'show_column_move' => false,
-		'show_column_delete' => false,
+		'show_column_edit' => true,
+		'show_column_move' => true,
+		'show_column_delete' => true,
 		'fast_folder_minus' => true,
 		'fast_folder_plus' => true,
 		'fast_symbol' => true,
