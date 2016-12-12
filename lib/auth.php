@@ -112,26 +112,42 @@ class auth {
 	function display_login_form () {
 		?>
 
-			<form name="loginform" method="POST" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
-			<center>
-				<table border="0">
-					<tr>
-						<td>Username:</td>
-						<td><input name="username" type="text" value="" tabindex="1"></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input name="password" type="password" value="" tabindex="2"></td>
-					</tr>
-					<tr>
-						<td>Remember login:</td>
-						<td><input type="checkbox" name="remember" tabindex="3"></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" value="Login" tabindex="4"></td>
-					</tr>
-				</table>
+<?php
+require_once ("./css/signin.php");
+?>
+
+
+<div class="container">
+
+			<form class="form-signin" name="loginform" method="POST" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
+
+
+<h2 class="form-signin-heading">Please sign in</h2>
+
+
+				<div class="form-group">
+							<label for="InputEmail1" class="sr-only">Email address</label>
+								<input class="form-control" name="username" type="text" value="" tabindex="1" placeholder="Email" autofocus>
+				</div>
+
+				<div class="form-group">
+				    <label for="InputPassword1" class="sr-only">Password</label>
+
+									<input class="form-control" name="password" type="password" value="" tabindex="2" placeholder="Password">
+				</div>
+
+
+				<div class="checkbox">
+			    <label>
+			      <input type="checkbox" name="remember" tabindex="3">  Remember me
+			    </label>
+			  </div>
+
+
+
+				<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" tabindex="4">
+
+
 
 				<?php
 				if (strtolower (basename ($_SERVER['SCRIPT_NAME'])) == "index.php") {
@@ -139,13 +155,12 @@ class auth {
 				}
 				?>
 
-			</center>
+
 			</form>
 
+</div>
 
-		<script type="text/javascript">
-		document.loginform.username.focus();
-		</script>
+
 
 		<?php
 	}
