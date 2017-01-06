@@ -53,8 +53,10 @@ if ($post_title == '' || $post_url == '') {
 	<p><input type="button" value="Select folder" onClick="window.childof=document.forms['bmnew'].childof; window.path=document.forms['bmnew'].path; selectfolder('<?php echo $query_string; ?>')"><br>
 	<input type="text" name="path" value="<?php echo $path; ?>" size="50" readonly>
 	<input type="text" name="childof" value="<?php echo $folderid; ?>" size="1" class="invisible" readonly></p>
-	<p>Tags<br>
-	<input type=text name="tags" size="50" value="Not yet working"></p>
+	<!--
+<p>Tags<br>
+		<input type=text name="tags" size="50" value="Not yet working"></p>
+-->
 	<input type="submit" value=" OK ">
 	<input type="button" value=" Cancel " onClick="<?php echo $js_onclick; ?>">
 	Public <input type="checkbox" name="public" <?php echo $post_public ? "checked" : "";?>>

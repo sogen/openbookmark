@@ -16,7 +16,15 @@ if (extension_loaded ('zlib')) {
 */
 require_once (ABSOLUTE_PATH . "lib/webstart.php");
 if (! is_file (ABSOLUTE_PATH . "config/config.php")) {
-	die ('You have to <a href="./install.php">install</a> OpenBookmark.');
+	die ('<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css"/>
+
+<div class="container">
+	<div class="jumbotron">
+        <h1>Install required</h1>
+        <p>You have to <a href="./install.php">install</a> OpenBookmark.</p>
+      </div>
+			</div>
+');
 }
 else {
 	require_once (ABSOLUTE_PATH . "config/config.php");

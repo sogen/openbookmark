@@ -150,8 +150,10 @@ else if ($post_title == "" || $post_url == "" || $post_icon) {
 	<p><input type="button" value="Select folder" onClick="window.childof=document.forms['bmedit'].childof; window.path=document.forms['bmedit'].path; selectfolder('<?php echo $query_string; ?>')"><br>
 	<input type="text" name="path" value="<?php echo $path; ?>" size="50" readonly>
 	<input type="text" name="childof" value="<?php echo $row->childof; ?>" size="1" class="invisible" readonly></p>
+<!--
 	<p>Tags<br>
 	<input type=text name="tags" size="50" value="Not yet working"></p>
+-->
 	<input type="submit" value=" OK ">
 	<input type="button" value=" Cancel " onClick="self.close()">
 	<?php if ($settings['show_bookmark_icon']) : ?><input type="submit" value="Refresh Icon" name="favicon"><?php endif; ?>
