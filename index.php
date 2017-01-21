@@ -83,10 +83,6 @@ $order = set_get_order ();
 	<?php endif; ?>
 
 
-	<?php // if (is_mobile_browser() && !$search_mode): ?>
-	<?php // endif; ?>
-
-
 
 
 <!-- Menu -->
